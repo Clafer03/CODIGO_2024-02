@@ -3,8 +3,48 @@
 using namespace std;
 
 template< typename T >
-void maxSort(vector<T> &arr){
+void maxElement(vector<T> &arr, int n, int count){
+    int maxIndex = 0;  // Almacenar la posición del valor máximo 
+    for (int i = 1; i < n - count; i++) {
+        if (arr[i] > arr[maxIndex]) {
+            maxIndex = i; //Obtener la posición del valor máximo 
+        }
+    }
+    // Intercambiar el valor máximo encontrado con la última posición no ordenada
+    swap(arr[maxIndex], arr[n - 1 - count]);
+}
 
+template< typename T >
+void maxSort(vector<T> &arr, int n){
+    for (int count = 0; count < n - 1; count++) { //Repetir n veces la busqueda del elemento máximo para poder ordenar el arreglo
+        maxElement(arr, n, count);
+    }
+}
+
+template< typename T >
+void printArray(vector<T> arr, int n){
+    cout << "Arreglo original: \n";
+    for (int i = 0; i < n; i++)
+        cout << arr[i] << " ";
+    cout << endl;
+}
+
+
+int main(){
+    vector<int> arr = {38, 27, 43, 3, 9, 82, 10};
+    int arr_size = arr.size();
+
+    printArray(arr, arr_size);
+
+    maxSort(arr, arr_size);
+
+    printArray(arr, arr_size);
+
+    return 0;
+}
+
+
+    /*---------------------RECOMENDACIONES/*---------------------*/
     //PORCENTAJE DE SOLUCION = 60-70%
     // int max = INT_MIN;
     // int count = 0;
@@ -28,36 +68,3 @@ void maxSort(vector<T> &arr){
     // count++;
     /*Aunque incrementaste count, solo llamaste a maxSort una vez, por lo que count 
     no tuvo un efecto real en la lógica.*/
-
-    int n = arr.size();
-    for (int count = 0; count < n - 1; count++) {
-        int maxIndex = 0;  // Para almacenar la posición del máximo valor
-        for (int i = 1; i < n - count; i++) {
-            if (arr[i] > arr[maxIndex]) {
-                maxIndex = i;
-            }
-        }
-        // Intercambiar el máximo valor encontrado con la última posición no ordenada
-        swap(arr[maxIndex], arr[n - 1 - count]);
-    }
-}
-
-
-int main(){
-    vector<int> arr = {38, 27, 43, 3, 9, 82, 10};
-    int arr_size = arr.size();
-
-    cout << "Arreglo original: \n";
-    for (int i = 0; i < arr_size; i++)
-        cout << arr[i] << " ";
-    cout << endl;
-
-    maxSort(arr);
-
-    cout << "Arreglo ordenado: \n";
-    for (int i = 0; i < arr_size; i++)
-        cout << arr[i] << " ";
-    cout << endl;
-
-    return 0;
-}
