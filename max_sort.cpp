@@ -23,7 +23,6 @@ void maxSort(vector<T> &arr, int n){
 
 template< typename T >
 void printArray(vector<T> arr, int n){
-    cout << "Arreglo original: \n";
     for (int i = 0; i < n; i++)
         cout << arr[i] << " ";
     cout << endl;
