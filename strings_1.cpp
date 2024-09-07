@@ -62,20 +62,3 @@ int main(){
     decoding(palabrita, len);
     return 0;
 }
-
-
-    // char letra;
-    // cout << "> ";
-    // cin >> letra;
-
-    // string str = "Un elefante se balanceaba";
-    // size_t first = str.find(letra), 
-    //     last = str.find_last_of(letra);
-    // //string rev(str.begin(), str.end());
-    // if(first != string::npos){
-    //     cout << "Se encontró " << letra << " en la posición " << first << "\n";
-    // }
-    // if(last != string::npos){
-    //     cout << "La última aparición de " << letra << " esta en la posición " << last << "\n";
-    // }
-    // //cout << rev << "\n";
