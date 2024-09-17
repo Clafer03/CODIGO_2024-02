@@ -34,19 +34,17 @@ struct grafo{
             nodo1->vecinos.push_back(nodo2);
             nodo2->vecinos.push_back(nodo1);
         }
-
     }
 
     void mostrarGrafo() {
         for (Nodo* nodo : nodos) {
-            cout << "Nodo " << nodo->valor << ":";
+            cout << nodo->valor << ":";
             for (Nodo* vecino : nodo->vecinos) {
                 cout << " -> " << vecino->valor;
             }
             cout << endl;
         }
     }
-
 };
 
 void buildGrafo(grafo& g){
@@ -57,8 +55,9 @@ void buildGrafo(grafo& g){
     cout << "Tam grafo: ";
     cin >> n;
     for(int i = 0; i < n; i++){
-        g.addNodo(i+1);
-        cout << "Nodo : "<<  i+1 << endl;
+        int val = i+1*(i/2);
+        g.addNodo(val);
+        cout << "Nodo : "<<  val << endl;
     }
 
     cout << "Conecta nodos\n";
@@ -66,7 +65,7 @@ void buildGrafo(grafo& g){
     {   
         cin >> n1 >> n2;
         g.addArista(n1,n2);
-        cout << "continuar? [0][1]";
+        cout << "continuar? [0][1]: ";
         cin >> flag;
     } while (flag != 0);
 }
@@ -76,25 +75,26 @@ int main(){
     grafo grafo;
 
     buildGrafo(grafo);
-
-    // Agregar nodos al grafo
-    // grafo.addNodo(0);
-    // grafo.addNodo(1);
-    // grafo.addNodo(2);
-    // grafo.addNodo(3);
-    // grafo.addNodo(4);
-
-    // Agregar aristas entre los nodos
-    // grafo.addArista(0, 1);
-    // grafo.addArista(0, 4);
-    // grafo.addArista(1, 2);
-    // grafo.addArista(1, 3);
-    // grafo.addArista(1, 4);
-    // grafo.addArista(2, 3);
-    // grafo.addArista(3, 4);
-
-    // Mostrar el grafo
     grafo.mostrarGrafo();
-
     return 0;
 }
+
+
+
+/*
+    //Agregar nodos al grafo ---------------------------
+    grafo.addNodo(0);
+    grafo.addNodo(1);
+    grafo.addNodo(2);
+    grafo.addNodo(3);
+    grafo.addNodo(4);
+
+    //Agregar aristas entre los nodos
+    grafo.addArista(0, 1);
+    grafo.addArista(0, 4);
+    grafo.addArista(1, 2);
+    grafo.addArista(1, 3);
+    grafo.addArista(1, 4);
+    grafo.addArista(2, 3);
+    grafo.addArista(3, 4);
+*/
