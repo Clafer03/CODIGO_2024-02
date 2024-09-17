@@ -18,7 +18,8 @@ if args.get("video", None) is None:
 else : vs = cv2.videoCapture(args["video"])
 
 firstFrame = None
-noMovementCount = 0
+staticFrames = 0
+staticThreshold = 50
 
 while True:
     frame = vs.read()
@@ -56,13 +57,13 @@ while True:
 
     # Si no se detecta movimiento durante 100 cuadros, se actualiza el primer frame
     if not movementDetected:
-        noMovementCount += 1
+        staticFrames += 1
     else:
-        noMovementCount = 0
+        staticFrames = 0
 
-    if noMovementCount >= 100:  # Actualizar el `firstFrame` después de 100 cuadros sin movimiento
+    if staticFrames >= staticThreshold:  # Actualizar el `firstFrame` después de 100 cuadros sin movimiento
         firstFrame = gray
-        noMovementCount = 0  # Reiniciar el contador
+        staticFrames = 0  # Reiniciar el contador
 
     cv2.putText(frame, "Status: {}".format(text), (10, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
     cv2.putText(frame, datetime.datetime.now().strftime("%A %d %B %Y %I:%M:%S%p"), (10, frame.shape[0] - 10), 
