@@ -1,13 +1,28 @@
-#include<iostream>
+#include <iostream>
+#include <string>
 using namespace std;
 
+void trianguloPerfecto(const string& cadena) {
+    int longitud = cadena.length();
+    int nivel = 1;
 
-int main(){
+    int pos = 0;
+    while (pos + nivel <= longitud) {
+        for (int i = 0; i < nivel; ++i) {
+            cout << cadena[pos];
+            ++pos;
+        }
+        cout << endl;
+        ++nivel;
+    }
+}
 
-    string texto="";
-    cout << "Ingrese texto: ";
-    cin >> texto;
+int main() {
+    string cadena;
+    cout << "Introduce una cadena: ";
+    cin >> cadena;
 
-    trianguloPerfecto(texto);
+    trianguloPerfecto(cadena);
 
+    return 0;
 }
