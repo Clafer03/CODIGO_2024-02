@@ -36,7 +36,7 @@ while True:
     frame = vs.read()  # Leer el cuadro actual del video
     # Si estamos leyendo de la cámara, el frame será directamente 'frame', si es de un archivo será 'frame[1]'
     frame = frame if args.get("video", None) is None else frame[1]
-    text = "Sin Movimiento"  # Estado inicial, sin movimiento detectado
+    text = "Sin Movimiento Detectado"  # Estado inicial, sin movimiento detectado
 
     # Si no hay más cuadros (por ejemplo, fin del video), salir del bucle
     if frame is None:
@@ -75,8 +75,8 @@ while True:
         # Calcular el cuadro delimitador (bounding box) para el contorno
         (x, y, w, h) = cv2.boundingRect(c)
         # Dibujar un rectángulo verde alrededor del área en movimiento
-        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)  # Color rojo en formato BGR
-        text = "Movimiento"  # Cambiar el texto para indicar que hay movimiento
+        cv2.rectangle(frame, (x, y), (x + w, y + h), (0, 0, 255), 2)  # Color rojo en formato RGB
+        text = "Movimiento Detectado"  # Cambiar el texto para indicar que hay movimiento
         movementDetected = True  # Indicar que se ha detectado movimiento
 
     # Si no se ha detectado movimiento en este cuadro, incrementar el contador de cuadros estáticos
