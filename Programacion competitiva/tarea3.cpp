@@ -7,10 +7,10 @@ void eliminarElemento(vector<int> &v){
     int pos = 0;
     cout << "Ingrese la posición a eliminar: ";
     cin >> pos;
-    for(int i = 0; i <v.size(); i++){
-        if(i == pos){
-           v.erase(v.begin() + pos);
-        }
+    if (pos >= 0 && pos < v.size()) {
+        v.erase(v.begin() + pos);  // Complejidad O(n)
+    } else {
+        cout << "Posición inválida" << endl;
     }
 }
 
