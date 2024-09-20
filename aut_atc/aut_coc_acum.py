@@ -1,6 +1,6 @@
 import pandas as pd
 import numpy as np
-import openpyxl}
+import openpyxl
 import os
 from io import BytesIO
 from datetime import datetime
