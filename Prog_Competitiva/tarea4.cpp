@@ -24,9 +24,9 @@ int main(){
     cout << "-\n";
     cin >> n;
 
-    reverseDLL()
+    reverseDLL();
 
-}
+};
 
 // reporte
 // q postes diarios
